@@ -1,0 +1,64 @@
+.tasksWrapp {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0px;
+  gap: 24px;
+
+  position: absolute;
+  width: 736px;
+  height: 287px;
+  left: calc(50% - 736px / 2);
+  top: 291px;
+}
+
+.reports {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-end;
+  padding: 0;
+  gap: 35rem;
+
+  width: 106px;
+  height: 17px;
+
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 17px;
+
+  /* identical to box height */
+
+  /* Blue */
+  color: #4ea8de;
+
+  /* Inside auto layout */
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+}
+
+.empty {
+  position: relative;
+  width: 1440px;
+  height: 1024px;
+
+  /* Gray 600 */
+  background: #1a1a1a;
+}
+
+.taskArea {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0px;
+  gap: 24px;
+
+  position: absolute;
+  width: 736px;
+  height: 287px;
+  left: calc(50% - 736px / 2);
+  top: 291px;
+}
