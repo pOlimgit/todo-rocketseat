@@ -3,9 +3,9 @@ import { FC } from "react";
 import { PlusCircle } from "phosphor-react";
 import styles from "./input.module.css";
 
-export const Input: FC = () => {
+export function Input() {
   return (
-    <div className={styles['input-wrapper']}>
+    <div className={styles.inputWrapper}>
       <input
         className=""
         type="text"
@@ -13,7 +13,8 @@ export const Input: FC = () => {
         name="inputToDo"
       />
       <button>
-        Criar &nbsp;<PlusCircle size="1rem" />
+        Criar &nbsp;
+        <PlusCircle size="1rem" />
       </button>
     </div>
   );
