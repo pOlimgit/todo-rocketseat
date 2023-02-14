@@ -1,2 +1,2 @@
 # todo-rocketseat
-First challenge RocketSeat Ignite
+First challenge: RocketSeat - Ignite
