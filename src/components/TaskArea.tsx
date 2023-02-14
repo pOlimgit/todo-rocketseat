@@ -1,4 +1,5 @@
 import { FC } from "react";
+import { EmptyTask } from "./EmptyTask";
 import styles from "./TaskArea.module.css";
 
 interface Tasks {
@@ -10,21 +11,20 @@ export const TaskArea: FC<Tasks> = ({ tasksCount, tasksCompleted }: Tasks) => {
   return (
     <>
       <div className={styles.tasksWrapp}>
-        <div className={styles.reports}>
-          <div>
+        <div className={styles.info}>
+          <div className={styles.createdTasks}>
             <h4>
-              Tarefas Criadas <span></span>
-              {tasksCount}
+              Tarefas Criadas&nbsp;<span className={styles.hug}>{0}</span>
             </h4>
           </div>
-          <div>
+          <div className={styles.completedTasks}>
             <h4>
-              Concluidas <span>{tasksCompleted}</span>{" "}
+              Concluidas&nbsp;<span className={styles.hug}>{0}</span>
             </h4>
           </div>
         </div>
         <div className={styles.taskArea}>
-          <h4>TaskÁrea</h4>
+          <EmptyTask />
         </div>
       </div>
     </>

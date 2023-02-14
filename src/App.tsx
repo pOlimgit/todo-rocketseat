@@ -1,6 +1,6 @@
 import { Header } from "./components/Header";
-import { Input } from "./components/input";
-import { TaskBoard } from "./components/TaskBoard";
+import { Input } from "./components/Input";
+import { TaskArea } from "./components/TaskArea";
 import "./main.css";
 
 function App() {
@@ -8,7 +8,7 @@ function App() {
     <>
       <Header />
       <Input />
-      <TaskBoard />
+      <TaskArea />
     </>
   );
 }
