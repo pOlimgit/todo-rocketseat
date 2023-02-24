@@ -69,13 +69,13 @@
   /* Auto layout */
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: start;
   align-items: center;
   padding: 64px 24px;
   gap: 16px;
 
   width: 736px;
-  height: 244px;
+  height: 587px;
 
   /* Grey 400 */
   border-top: 1px solid #333333;
@@ -86,6 +86,7 @@
   order: 1;
   align-self: stretch;
   flex-grow: 0;
+  overflow: hidden;
 }
 
 .hug {
