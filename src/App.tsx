@@ -1,14 +1,13 @@
 import { Header } from "./components/Header";
-import { Input } from "./components/Input";
-import { TaskArea } from "./components/TaskArea";
+import { TaskStage } from "./components/TaskStage";
+
 import "./main.css";
 
 function App() {
   return (
     <>
       <Header />
-      <Input />
-      <TaskArea />
+      <TaskStage />
     </>
   );
 }
