@@ -1,34 +1,54 @@
 import { PlusCircle } from "phosphor-react";
-import {
-  FormEventHandler,
-  ChangeEventHandler,
-  useState,
-  SetStateAction,
-  FormEvent,
-} from "react";
-import styles from "./TaskStage.module.css";
+import { useState, SetStateAction, FormEvent } from "react";
 import { TaskArea } from "./TaskArea";
+import uuid from "react-uuid";
+import styles from "./TaskStage.module.css";
 
-interface InPut {
-  handleNewTask: FormEventHandler<HTMLFormElement> | undefined;
-  taskText: string | number | readonly string[] | undefined;
-  handleNewTaskTextChange: ChangeEventHandler<HTMLInputElement> | undefined;
-}
+export type Task = {
+  id: string;
+  content: string;
+  isCompleted: boolean;
+};
 
 export function TaskStage() {
-  const [tasks, setTasks] = useState<string[]>([]);
-  const [taskText, setTaskText] = useState("");
+  const [tasks, setTasks] = useState<Task[]>([]);
+  const [newTaskValue, setNewTaskValue] = useState("");
 
   const handleNewTask = (event: FormEvent) => {
     event.preventDefault();
-    setTasks([taskText, ...tasks]);
-    setTaskText("");
+    const newTask: Task = {
+      id: uuid(),
+      content: newTaskValue,
+      isCompleted: false,
+    };
+    const twins = tasks.find((content) => content.content === newTaskValue);
+    twins?.content === newTaskValue
+      ? alert("Esta tarefa já está na sua lista")
+      : setTasks([newTask, ...tasks]);
+    setNewTaskValue("");
   };
 
   const handleNewTaskTextChange = (event: {
     target: { value: SetStateAction<string> };
   }) => {
-    setTaskText(event.target.value);
+    setNewTaskValue(event.target.value);
+  };
+
+  const deleteTask = (taskToDelete: string) => {
+    const tasksWithoutDeletedOne = tasks.filter((task) => {
+      return task.id !== taskToDelete;
+    });
+    setTasks(tasksWithoutDeletedOne);
+  };
+
+  const toggleUpdate = (TaskIdVerify: string) => {
+    const tasksCopy = tasks.map((task) => ({ ...task }));
+    const taskToBeUpdated = tasksCopy.find((task) => task.id === TaskIdVerify);
+
+    if (taskToBeUpdated) {
+      taskToBeUpdated.isCompleted = !taskToBeUpdated.isCompleted;
+      setTasks(tasksCopy);
+    }
   };
 
   return (
@@ -37,7 +57,7 @@ export function TaskStage() {
         <input
           type="text"
           placeholder="Adicione uma nova tarefa"
-          value={taskText}
+          value={newTaskValue}
           onChange={handleNewTaskTextChange}
         />
         <button type="submit">
@@ -45,7 +65,11 @@ export function TaskStage() {
           <PlusCircle size="1rem" />
         </button>
       </form>
-      <TaskArea tasks={tasks} setTasks={setTasks} />
+      <TaskArea
+        content={tasks}
+        toggleUpdate={toggleUpdate}
+        deleteTask={deleteTask}
+      />
     </>
   );
 }

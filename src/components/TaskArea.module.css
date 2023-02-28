@@ -19,7 +19,7 @@
   justify-content: space-between;
   align-items: flex-end;
   padding: 0px;
-  gap: 500px;
+  gap: 100px;
 
   width: 736px;
   height: 19px;
@@ -48,7 +48,7 @@
 }
 
 .completedTasks {
-  width: 78px;
+  width: 8.75rem;
   height: 17px;
 
   font-family: "Inter";
