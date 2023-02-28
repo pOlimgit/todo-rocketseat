@@ -1,23 +1,43 @@
-import { Circle, Trash } from "phosphor-react";
+import { CheckCircle, Circle, Trash } from "phosphor-react";
 import styles from "./TaskItem.module.css";
 
 interface ITaskItem {
+  taskId: string;
   task: string;
-  onDeleteItem: (content: string) => void;
+  isComplete: boolean;
+  onToggleComplete: (idToBeChecked: string) => void;
+  onDeleteItem: (id: string) => void;
 }
 
-export const TaskItem = ({ task, onDeleteItem }: ITaskItem) => {
+export const TaskItem = ({
+  task,
+  taskId,
+  isComplete,
+  onDeleteItem,
+  onToggleComplete,
+}: ITaskItem) => {
+  const handleToggleToVerify = () => {
+    onToggleComplete(taskId);
+  };
 
-    const handleDeleteItem = () => {
-        onDeleteItem(task)
-    }
+  const handleDeleteItem = () => {
+    onDeleteItem(taskId);
+  };
+
+  console.log(isComplete);
 
   return (
-    <div className={styles.taskItem}>
-      <Circle size={"1.09rem"} />
+    <div className={isComplete ? styles.taskItemCompleted : styles.taskItem}>
+      <span className={styles.markTask} onClick={handleToggleToVerify}>
+        {isComplete ? (
+          <CheckCircle size={"1.20rem"} />
+        ) : (
+          <Circle size={"1.20rem"} />
+        )}
+      </span>
       <strong>{task}</strong>
-      <span onClick={handleDeleteItem}>
-        <Trash size={"1.09rem"} />
+      <span className={styles.trashIcon} onClick={handleDeleteItem}>
+        <Trash size={"1.20rem"} />
       </span>
     </div>
   );
